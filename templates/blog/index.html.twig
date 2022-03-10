@@ -3,33 +3,22 @@
 {% block title %}Blog index{% endblock %}
 
 {% block body %}
-    <h1>Blog index</h1>
+<section >
+        <div class="container" style=" height:400px; background-image: url(../images/blog.gif); background-repeat: no-repeat !important;">
+        </div>
+      </section>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Resume</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for blog in blogs %}
-            <tr>
-                <td>{{ blog.Titre }}</td>
-                <td>{{ blog.resume }}</td>
-                <td>
-                    <a href="{{ path('app_blog_show', {'id': blog.id}) }}">show</a>
-                    <a href="{{ path('app_blog_edit', {'id': blog.id}) }}">edit</a>
-                </td>
-            </tr>
+<section>
+{% for blog in blogs %}
+        <div class="container box">
+            <h2 class="title is-2"><a href="{{ path('app_blog_show', {'id': blog.id}) }}">{{ blog.Titre }} </a></h2>
+            <p class="is-size-4">{{ blog.resume }}</p>
+            <p is-size-5><span>Publié par : Anouchka</span><span> le 01/03/2022</span></p>
+        </div>
         {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <p> Pas d'articles trouvés </p>
+{% endfor %}
+</section>
 
-    <a href="{{ path('app_blog_new') }}">Ajouter un nouvel article</a>
+    
 {% endblock %}
